@@ -1,21 +1,24 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
 
+#A nice decorator so I can use "@endpoint("/foo")"
+def endpoint(endpoint):
+    def wrapper(callback):
+        class resource(Resource):
+            def post(self):
+                json_data = request.get_json(force=True)
+                return callback(json_data)
+        
+        api.add_resource(resource, "/api"+endpoint)
+    
+    return wrapper
+
 app = Flask(__name__)
 api = Api(app)
 
-"""
-@app.route('/<path:path>')
-def hello_world(path):
-	print(path)
-	return 'Hello, World!'
-"""
-
-class HelloWorld(Resource):
-	def get(self):
-		return {'hello': 'world'}
-
-api.add_resource(HelloWorld, '/api/abcd')
+@endpoint("/ping")
+def ping(json):
+	return {'yeet': json}
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()
