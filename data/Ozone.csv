@@ -1,0 +1,18 @@
+Hourly measurement data supplied by Air Quality in Scotland on 23/07/2019
+All Data GMT hour ending
+Status: V=Verified P=Provisionaly Verified N=Not Verified S=Suspect
+,,"Edinburgh St Leonards",
+Date,Time,"Ozone",Status
+23/07/2019,01:00,28.9,P ugm-3
+23/07/2019,02:00,25.1,P ugm-3
+23/07/2019,03:00,23.5,P ugm-3
+23/07/2019,04:00,19.8,P ugm-3
+23/07/2019,05:00,16,P ugm-3
+23/07/2019,06:00,15.4,P ugm-3
+23/07/2019,07:00,19.4,P ugm-3
+23/07/2019,08:00,19.8,P ugm-3
+23/07/2019,09:00,19.8,P ugm-3
+
+
+
+End

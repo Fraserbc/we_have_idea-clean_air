@@ -1,0 +1,18 @@
+Hourly measurement data supplied by Air Quality in Scotland on 23/07/2019
+All Data GMT hour ending
+Status: V=Verified P=Provisionaly Verified N=Not Verified S=Suspect
+,,"Edinburgh Currie",,"Edinburgh Glasgow Road",,"Edinburgh Queensferry Road",,"Edinburgh Salamander St",,"Edinburgh St John's Road",,"Edinburgh St Leonards",,"Edinburgh Tower Street",
+Date,Time,"PM10 particulate matter (Hourly measured)",Status,"PM10 particulate matter (Hourly measured)",Status,"PM10 particulate matter (Hourly measured)",Status,"PM10 particulate matter (Hourly measured)",Status,"PM10 particulate matter (Hourly measured)",Status,"PM10 particulate matter (Hourly measured)",Status,"PM10 particulate matter (Hourly measured)",Status
+23/07/2019,01:00,15.9,P ugm-3 (INDIC.GRAV),No data,,No data,,18.2,P ugm-3 (INDIC.GRAV),12.2,P ugm-3 (FIDAS),13.2,P ugm-3 (TEOM FDMS),10.8,P ugm-3 (FIDAS)
+23/07/2019,02:00,16.1,P ugm-3 (INDIC.GRAV),No data,,No data,,17,P ugm-3 (INDIC.GRAV),11.9,P ugm-3 (FIDAS),11.8,P ugm-3 (TEOM FDMS),10.3,P ugm-3 (FIDAS)
+23/07/2019,03:00,13.5,P ugm-3 (INDIC.GRAV),No data,,No data,,16.9,P ugm-3 (INDIC.GRAV),9.8,P ugm-3 (FIDAS),12.5,P ugm-3 (TEOM FDMS),9.7,P ugm-3 (FIDAS)
+23/07/2019,04:00,12.4,P ugm-3 (INDIC.GRAV),No data,,No data,,13.7,P ugm-3 (INDIC.GRAV),9.7,P ugm-3 (FIDAS),9.3,P ugm-3 (TEOM FDMS),8.7,P ugm-3 (FIDAS)
+23/07/2019,05:00,12,P ugm-3 (INDIC.GRAV),No data,,No data,,15,P ugm-3 (INDIC.GRAV),9.1,P ugm-3 (FIDAS),12.9,P ugm-3 (TEOM FDMS),8.6,P ugm-3 (FIDAS)
+23/07/2019,06:00,12.4,P ugm-3 (INDIC.GRAV),No data,,No data,,No data,,9.3,P ugm-3 (FIDAS),11.7,P ugm-3 (TEOM FDMS),12.3,P ugm-3 (FIDAS)
+23/07/2019,07:00,No data,,No data,,No data,,No data,,11.4,P ugm-3 (FIDAS),9.2,P ugm-3 (TEOM FDMS),9.1,P ugm-3 (FIDAS)
+23/07/2019,08:00,No data,,No data,,No data,,No data,,9.2,P ugm-3 (FIDAS),8.1,P ugm-3 (TEOM FDMS),7,P ugm-3 (FIDAS)
+23/07/2019,09:00,No data,,No data,,No data,,No data,,9.7,P ugm-3 (FIDAS),12.5,P ugm-3 (TEOM FDMS),7.8,P ugm-3 (FIDAS)
+
+
+
+End

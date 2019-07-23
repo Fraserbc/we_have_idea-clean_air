@@ -1,0 +1,18 @@
+Hourly measurement data supplied by Air Quality in Scotland on 23/07/2019
+All Data GMT hour ending
+Status: V=Verified P=Provisionaly Verified N=Not Verified S=Suspect
+,,"Edinburgh Currie",,"Edinburgh Glasgow Road",,"Edinburgh Gorgie Road",,"Edinburgh Nicolson Street",,"Edinburgh Queensferry Road",,"Edinburgh Salamander St",,"Edinburgh St John's Road",,"Edinburgh St Leonards",
+Date,Time,"Nitric oxide",Status,"Nitric oxide",Status,"Nitric oxide",Status,"Nitric oxide",Status,"Nitric oxide",Status,"Nitric oxide",Status,"Nitric oxide",Status,"Nitric oxide",Status
+23/07/2019,01:00,5.4,P ugm-3,No data,,No data,N ugm-3,2.5,P ugm-3,4.8,P ugm-3,2.5,P ugm-3,4.8,P ugm-3,No data,P ugm-3
+23/07/2019,02:00,3.4,P ugm-3,No data,,No data,N ugm-3,6.1,P ugm-3,3.9,P ugm-3,0,P ugm-3,3.9,P ugm-3,No data,P ugm-3
+23/07/2019,03:00,4.2,P ugm-3,No data,,No data,N ugm-3,1.4,P ugm-3,3.8,P ugm-3,No data,N ugm-3,4.7,P ugm-3,No data,P ugm-3
+23/07/2019,04:00,2.2,P ugm-3,No data,,No data,N ugm-3,4.7,P ugm-3,3.9,P ugm-3,No data,N ugm-3,8,P ugm-3,No data,P ugm-3
+23/07/2019,05:00,10.3,P ugm-3,No data,,No data,N ugm-3,15.3,P ugm-3,7,P ugm-3,8.1,P ugm-3,15.4,P ugm-3,No data,P ugm-3
+23/07/2019,06:00,13.3,P ugm-3,No data,,3.4,P ugm-3,38.3,P ugm-3,No data,,No data,,24.8,P ugm-3,No data,P ugm-3
+23/07/2019,07:00,No data,,No data,,No data,,60.9,P ugm-3,No data,,No data,,82.7,P ugm-3,No data,P ugm-3
+23/07/2019,08:00,No data,,No data,,No data,,48.8,P ugm-3,No data,,No data,,66.8,P ugm-3,No data,P ugm-3
+23/07/2019,09:00,No data,,No data,,No data,,90.9,P ugm-3,No data,,No data,,57.2,P ugm-3,No data,P ugm-3
+
+
+
+End

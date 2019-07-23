@@ -1,0 +1,18 @@
+Hourly measurement data supplied by Air Quality in Scotland on 23/07/2019
+All Data GMT hour ending
+Status: V=Verified P=Provisionaly Verified N=Not Verified S=Suspect
+,,"Edinburgh St John's Road",,"Edinburgh St Leonards",,"Edinburgh Tower Street",
+Date,Time,"PM2.5 particulate matter (Hourly measured)",Status,"PM2.5 particulate matter (Hourly measured)",Status,"PM2.5 particulate matter (Hourly measured)",Status
+23/07/2019,01:00,6.7,P ugm-3 (Ref.eq),6.3,P ugm-3 (TEOM FDMS),6.2,P ugm-3 (Ref.eq)
+23/07/2019,02:00,6.6,P ugm-3 (Ref.eq),7.2,P ugm-3 (TEOM FDMS),6.1,P ugm-3 (Ref.eq)
+23/07/2019,03:00,6,P ugm-3 (Ref.eq),5.8,P ugm-3 (TEOM FDMS),5.8,P ugm-3 (Ref.eq)
+23/07/2019,04:00,5.7,P ugm-3 (Ref.eq),5.1,P ugm-3 (TEOM FDMS),5.2,P ugm-3 (Ref.eq)
+23/07/2019,05:00,5.3,P ugm-3 (Ref.eq),5,P ugm-3 (TEOM FDMS),5.3,P ugm-3 (Ref.eq)
+23/07/2019,06:00,5.2,P ugm-3 (Ref.eq),6.3,P ugm-3 (TEOM FDMS),5.7,P ugm-3 (Ref.eq)
+23/07/2019,07:00,5.6,P ugm-3 (Ref.eq),3.4,P ugm-3 (TEOM FDMS),4.6,P ugm-3 (Ref.eq)
+23/07/2019,08:00,4.5,P ugm-3 (Ref.eq),4.3,P ugm-3 (TEOM FDMS),4.1,P ugm-3 (Ref.eq)
+23/07/2019,09:00,4.7,P ugm-3 (Ref.eq),4.5,P ugm-3 (TEOM FDMS),3.8,P ugm-3 (Ref.eq)
+
+
+
+End

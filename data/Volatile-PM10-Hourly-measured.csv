@@ -1,0 +1,18 @@
+Hourly measurement data supplied by Air Quality in Scotland on 23/07/2019
+All Data GMT hour ending
+Status: V=Verified P=Provisionaly Verified N=Not Verified S=Suspect
+,,"Edinburgh Queensferry Road",,"Edinburgh St Leonards",
+Date,Time,"Volatile PM10 (Hourly measured)",Status,"Volatile PM10 (Hourly measured)",Status
+23/07/2019,01:00,No data,,-1.3,P ugm-3 (TEOM FDMS)
+23/07/2019,02:00,No data,,4.3,P ugm-3 (TEOM FDMS)
+23/07/2019,03:00,No data,,5.3,P ugm-3 (TEOM FDMS)
+23/07/2019,04:00,No data,,3.2,P ugm-3 (TEOM FDMS)
+23/07/2019,05:00,No data,,7.1,P ugm-3 (TEOM FDMS)
+23/07/2019,06:00,No data,,6,P ugm-3 (TEOM FDMS)
+23/07/2019,07:00,No data,,2.9,P ugm-3 (TEOM FDMS)
+23/07/2019,08:00,No data,,2,P ugm-3 (TEOM FDMS)
+23/07/2019,09:00,No data,,4.3,P ugm-3 (TEOM FDMS)
+
+
+
+End
