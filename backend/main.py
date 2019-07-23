@@ -20,8 +20,8 @@ api = Api(app)
 
 #Just an echo endpoint for testing
 @endpoint("/echo")
-def ping(json):
-	return {'echo': json}
+def ping(json_data):
+	return {'echo': json_data}
 
 #Start the app
 if __name__ == '__main__':
