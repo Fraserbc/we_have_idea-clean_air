@@ -1,5 +1,5 @@
 #Import the needed modules
-import sqlite3, csv
+import sqlite3, csv, statistics
 
 #Names of the files
 csv_filenames = {
@@ -21,24 +21,24 @@ db = sqlite3.connect("air_pollution.db")
 cur = db.cursor()
 
 #Create the table if it doen't exist
-query = """
-CREATE TABLE IF NOT EXISTS (
-	'location'	TEXT,
-	'carbon_monoxide'	INTEGER,
-	'nitric_oxide'	INTEGER,
-	'nitrogen_dioxide'	INTEGER,
-	'non_volatile_PM25'	INTEGER,
-	'non_volatile_PM10'	INTEGER,
-	'ozone'	INTEGER,
-	'PM25'	INTEGER,
-	'PM10'	INTEGER,
-	'sulphur_dioxide'	INTEGER,
-	'volatile_PM25'	INTEGER,
-	'volatile_PM10'	INTEGER
+create_db = """
+CREATE TABLE IF NOT EXISTS data (
+	location	TEXT UNIQUE,
+	carbon_monoxide	INTEGER,
+	nitric_oxide	INTEGER,
+	nitrogen_dioxide	INTEGER,
+	non_volatile_PM25	INTEGER,
+	non_volatile_PM10	INTEGER,
+	ozone	INTEGER,
+	PM25	INTEGER,
+	PM10	INTEGER,
+	sulphur_dioxide	INTEGER,
+	volatile_PM25	INTEGER,
+	volatile_PM10	INTEGER
 );
 """
 
-cur.execute(query)
+cur.execute(create_db)
 
 #Loop through the files
 for filename in csv_filenames.keys():
@@ -50,4 +50,27 @@ for filename in csv_filenames.keys():
 		#Get rid of the row that includes names as we don't need it
 		rows.pop(1)
 
-		print(rows)
+		locations = rows.pop(0)
+
+		#Go through the rows and average the data
+		for x in range(len(rows[0])):
+			try:
+				average = statistics.mean( [float(row[x]) for row in rows if row[x] != "No data"] )
+			except statistics.StatisticsError:
+				continue
+			
+			#Generate the query for inserting the data into the db
+			add_data = """
+			INSERT OR IGNORE INTO data (location) VALUES ("{location}");
+			UPDATE data SET {point_name}={data} WHERE location="{location}";
+			"""
+
+			#Put the data into the query and execute it
+			add_data = add_data.format(point_name=csv_filenames[filename], location=locations[x], data=average)
+			cur.executescript(add_data)
+		
+			print("LOCATION - {}\nPOLLUTANT - {}\nAVERAGE - {}".format(locations[x], csv_filenames[filename], average))
+
+#Close the DB and write the changes
+db.commit()
+db.close()
