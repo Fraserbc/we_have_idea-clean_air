@@ -1,3 +1,4 @@
+#Import Flask and Flask Restful for the api
 from flask import Flask, request
 from flask_restful import Resource, Api
 
@@ -13,12 +14,15 @@ def endpoint(endpoint):
     
     return wrapper
 
+#Create the app and api
 app = Flask(__name__)
 api = Api(app)
 
-@endpoint("/ping")
+#Just an echo endpoint for testing
+@endpoint("/echo")
 def ping(json):
-	return {'yeet': json}
+	return {'echo': json}
 
+#Start the app
 if __name__ == '__main__':
 	app.run()
