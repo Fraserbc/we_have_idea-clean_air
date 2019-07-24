@@ -1,5 +1,5 @@
 #Import the needed modules
-import sqlite3, csv, statistics
+import sqlite3, csv, statistics, random
 
 #Names of the files
 csv_filenames = {
@@ -55,7 +55,7 @@ for filename in csv_filenames.keys():
 		#Go through the rows and average the data
 		for x in range(len(rows[0])):
 			try:
-				average = statistics.mean( [float(row[x]) for row in rows if row[x] != "No data"] )
+				average = statistics.mean( [abs(float(row[x])) for row in rows if row[x] != "No data"] )
 			except statistics.StatisticsError:
 				continue
 			
@@ -70,6 +70,49 @@ for filename in csv_filenames.keys():
 			cur.executescript(add_data)
 		
 			print("LOCATION - {}\nPOLLUTANT - {}\nAVERAGE - {}".format(locations[x], csv_filenames[filename], average))
+
+#Mock the rest of the data
+collumns = [csv_filenames[col] for col in csv_filenames.keys()]
+
+#Fetch the locations
+cur.execute("SELECT location FROM data")
+rows = [x[0] for x in cur.fetchall()]
+
+#Get the data from all the collumns
+for col in collumns:
+	#Get the data from the db
+	cur.execute("SELECT {} FROM data".format(col))
+	data = cur.fetchall()
+
+	#Get the cells that contain data
+	#If they don't have any data add the name of the location it came from to a list
+	cells = []
+	rows_to_update = []
+	for x in range(len(data)):
+		if data[x] == (None,):
+			rows_to_update.append( rows[x] )
+		else:
+			cells.append(data[x][0])
+	
+	
+	#If there is more than one cell, get the range and use that for mocking the data
+	#If there is only one cell then the range is 0 to double the only cells value
+	if len(cells) > 1:
+		minimum = min(cells)
+		maximum = max(cells)
+	else:
+		minimum = 0
+		maximum = cells[0]*2
+	
+	#Get the random numbers to fill the db
+	mocked_cells = [random.uniform(minimum, maximum) for x in range( len(csv_filenames.keys()) - len(cells) )]
+	
+	#Loop through the location names and the mocked data
+	for row, cell in zip(rows_to_update, mocked_cells):
+		#Fill in the empty cells with mocked data
+		query = "UPDATE data SET \"{}\"={} WHERE location=\"{}\"".format(col, cell, row)
+		#print(query)
+		cur.execute(query)
 
 #Close the DB and write the changes
 db.commit()
