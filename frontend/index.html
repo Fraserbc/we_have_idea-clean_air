@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <form id="postcodeform" action="#" onsubmit="var xhr = new XMLHttpRequest(); xhr.open('GET', ('https://api.postcodes.io/postcodes/'+ document.getElementById('postcodebox').value), true); xhr.send(); xhr.onreadystatechange = function (e) {console.log(xhr.responseText); var geocoded = JSON.parse(xhr.responseText);}"><input id="postcodebox" type="text" placeholder="Postcode" name="postcode" style="float: left; width: 70vw;  margin: 0"><input id="submitbutton" type="submit" value="Go" style="float: right; width: 19vw; padding-top: 0.5vh; margin-right: 0.75vw"></form>
+    <form id="postcodeform" action="#" onsubmit="onLocationFound(document.getElementById('postcodebox').value);"><input id="postcodebox" type="text" placeholder="Postcode" name="postcode" style="float: left; width: 70vw;  margin: 0"><input id="submitbutton" type="submit" value="Go" style="float: right; width: 19vw; padding-top: 0.5vh; margin-right: 0.75vw"></form>
 
 <div id="map"></div>
 
@@ -33,31 +33,27 @@
                 id: 'mapbox.streets'
         }).addTo(map);
 
-        function onLocationFound(e) {
-                var radius = e.accuracy / 2;
-                
+        function onLocationFound(postcode) {
                 var elem = document.getElementById('submitbutton');
                 elem.value = "Get results"
-                elem.onclick = 
-                console.log(document.getElementById('submitbutton'));
-               	var xhr = new XMLHttpRequest(); xhr.open('GET', ('https://api.postcodes.io/postcodes?lon=' + e.latitude.toString() + "&lat=" + e.longitude.toString())); xhr.send(); xhr.onreadystatechange = function (e) {console.log(xhr.responseText); var postcode = JSON.parse(xhr.responseText);}
-                var elem = document.getElementById('postcodebox')
-                elem.defaultvalue = postcode("postcode")
+                elem.onclick = function() {return false;}
 
-                L.marker(e.latlng).addTo(map)
-                        .bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-                L.circle(e.latlng, radius).addTo(map);
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', ('https://api.postcodes.io/postcodes/'+ document.getElementById('postcodebox').value), true);
+                xhr.send();
+                xhr.onreadystatechange = function (e) {
+                	var geocoded = JSON.parse(xhr.responseText);
+                	geocoded.latlng = new Object();
+                	geocoded.latlng.lat = geocoded.result.latitude;
+                	geocoded.latlng.lng = geocoded.result.longitude;
+                	map.flyTo([geocoded.latlng.lat, geocoded.latlng.lat], 13);
+					//map.panTo([geocoded.latlng.lat, geocoded.latlng.lat], 13);
+                	L.marker(geocoded.latlng).addTo(map).bindPopup("You are here").openPopup();
+                	L.circle(geocoded.latlng, 1).addTo(map);
+                }
         }
 
-        function onLocationError(e) {
-                alert(e.message + " Please input your postcode above or allow location");
-        }
-
-        map.on('locationfound', onLocationFound);
-        map.on('locationerror', onLocationError);
-
-        map.locate({setView: true, maxZoom: 16});
+        //map.locate({setView: true, maxZoom: 16});
     </script>
 
 
