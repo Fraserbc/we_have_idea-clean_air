@@ -25,13 +25,26 @@ api = Api(app)
 def ping(json_data):
 	return {'echo': json_data}
 
-#Inspirational messages
+# Inspirational messages
 inspiration = {
-	"250":	["A1", "A2"],
-	"500":	["B1", "B2"],
-	"750":	["C1", "C2"],
-	"1000":	["D1", "D2"]
+	"250":	["Poor", "Bad", "No"],
+	"500":	["Ok", "All Right"],
+	"750":	["Good!", "Well Done!"],
+	"1000":	["Great!", "Amazing!"]
 }
+
+# Things you can do to help
+help_messages = [
+	"Use public transport or active travel (cycle/walk)",
+	"Buy a more efficient car or an electric car",
+	"Switch to a renewable energy tariff",
+	"Work closer to home and drive less",
+	"Join a car share",
+	"Don't drive during rush hour",
+	"Be more enery efficient and save money by insulating your home",
+	"Don't burn things especialy coal or wood",
+	"Use electric heating"
+]
 
 # The endpoint that takes lat long data and returns a score
 @endpoint("/score")
@@ -81,14 +94,17 @@ def score(json_data):
 	# Round to the nearest integer
 	score = round(statistics.mean([abs(((x*y)/10)-1)*1000 for x, y in zip(average, distances)]))
 
-	#Get the inspirational message
-	message = ""
+	# Get the inspirational message
+	inspirational_message = ""
 	for score_range in inspiration.keys():
 		if score <= int(score_range):
-			message = random.choice(inspiration[score_range])
+			inspirational_message = random.choice(inspiration[score_range])
+
+	# Select 2 things you can do to help
+	abilities = random.sample(help_messages, 2)
 
 	# Return the score
-	return {'score':score, "message":message}
+	return {'score':score, "message":inspirational_message, "abilities":abilities}
 
 # Start the app
 if __name__ == '__main__':
