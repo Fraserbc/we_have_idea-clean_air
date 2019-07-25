@@ -1,0 +1,17 @@
+#map {
+    width: 98vw;
+    height: 96vh;
+    float: right;
+}
+
+#postcodebox {
+    float: left;
+    width: 70vw;
+    margin: 0;
+
+}
+#submitbutton {
+    width: 19vw;
+    padding-top: 0.5vh;    
+}
+   
