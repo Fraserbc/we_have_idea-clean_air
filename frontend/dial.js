@@ -35,6 +35,9 @@ function drawDial(fillamt, width) {
 	if (fillamt > 1) {
 		fillamt = 1;
 	}
+	if (fillamt < 0) {
+		fillamt = 0;
+	}
 
 	var totalAngle = 270*(pi/180);
 	var startAngle = (pi*3/2)-totalAngle/2;
