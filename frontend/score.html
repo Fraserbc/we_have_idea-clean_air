@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>thingy</title>
-	<link rel="stylesheet" type="text/css" href="css-main">
+	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 <body onload="getScore();">
@@ -24,7 +24,7 @@
 	</div>
 </div>
 
-<div class="offscreen"><img src="gradient" id="gradient"></div>
+<div class="offscreen"><img src="gradient.png" id="gradient"></div>
 
 <script type="text/javascript">
 	var urlParams = new URLSearchParams(window.location.search);
@@ -32,7 +32,7 @@
 	const Http = new XMLHttpRequest();
 	const url = window.location.href.split("/")[2];
 
-	Http.open("POST", "http://" + url + "/getscore");
+	Http.open("POST", "http://" + url + "/api/score");
 
 	function getScore() {
 		Http.setRequestHeader("Content-Type", "text/json");
@@ -47,7 +47,7 @@
 		document.getElementById("score-msg").innerHTML = j.message;
 	}
 </script>
-<script src="js-dial"></script>
+<script src="dial.js"></script>
 
 </body>
 </html>
