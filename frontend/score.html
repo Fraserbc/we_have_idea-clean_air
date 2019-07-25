@@ -45,7 +45,12 @@
 		drawDial(j.score,  512);
 		document.getElementById("score-text").innerHTML = j.score.toString();
 		document.getElementById("score-msg").innerHTML = j.inspirational_message;
-		document.getElementById("asdf").innerHTML = j.abilities;
+		var a = j.abilities;
+		document.getElementById("asdf").innerHTML = "<ul>";
+		for (int i=0; i<a.length; i++) {
+			document.getElementById("asdf").innerHTML += "<li>" + a[i] + "</li>";
+		}
+		document.getElementById("asdf").innerHTML += "<ul>";
 	}
 </script>
 <script src="dial.js"></script>
