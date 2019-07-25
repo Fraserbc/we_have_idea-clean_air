@@ -19,7 +19,7 @@
 			</div>
 		</center>
 		<!-- a div to display the actions you can take !-->
-		<div class="asdf" id="asdf"></div>
+		<div class="actions" id="actions"></div>
 	</div>
 	
 	<!-- display the gradient off screen so it can be used for the canvas !-->
@@ -55,13 +55,13 @@
 			// create an array that stores the actions you can take as separate strings
 			var a = j.abilities;
 			// add the start of the unordered list
-			document.getElementById("asdf").innerHTML = "<ul>";
+			document.getElementById("actions").innerHTML = "<ul>";
 			// for every action, add a list item
 			for (var i=0; i<a.length; i++) {
-				document.getElementById("asdf").innerHTML += "<li>" + a[i] + "</li>";
+				document.getElementById("actions").innerHTML += "<li>" + a[i] + "</li>";
 			}
 			// end the unordered list
-			document.getElementById("asdf").innerHTML += "<ul>";
+			document.getElementById("actions").innerHTML += "<ul>";
 		}
 	</script>
 		
