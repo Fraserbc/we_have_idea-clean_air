@@ -18,7 +18,7 @@
 </head>
 
 <body>
-    <form id="postcodeform" action="#" onsubmit="onLocationFound(document.getElementById('postcodebox').value);"><input id="postcodebox" type="text" placeholder="Postcode" name="postcode" style="float: left; width: 70vw;  margin: 0"><input id="submitbutton" type="submit" value="Go" style="float: right; width: 19vw; padding-top: 0.5vh; margin-right: 0.75vw"></form>
+    <form id="postcodeform" action="#" onsubmit="onLocationFound(document.getElementById('postcodebox').value);"><input id="postcodebox" type="text" placeholder="Postcode" name="postcode" style="float: left; width: 70vw;  margin: 0"><input id="submitbutton" type="submit" value="Go" style=" width: 19vw; padding-top: 0.5vh"></form>
 
 <div id="map"></div>
 
@@ -46,8 +46,8 @@
                 	geocoded.latlng = new Object();
                 	geocoded.latlng.lat = geocoded.result.latitude;
                 	geocoded.latlng.lng = geocoded.result.longitude;
-                	map.flyTo([geocoded.latlng.lat, geocoded.latlng.lat], 13);
-					//map.panTo([geocoded.latlng.lat, geocoded.latlng.lat], 13);
+                	console.log(geocoded.latlng);
+                	map.flyTo([geocoded.latlng.lat, geocoded.latlng.lng], 13);
                 	L.marker(geocoded.latlng).addTo(map).bindPopup("You are here").openPopup();
                 	L.circle(geocoded.latlng, 1).addTo(map);
                 }
