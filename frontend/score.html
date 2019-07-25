@@ -35,8 +35,8 @@
 	Http.open("POST", "http://" + url + "/api/score");
 
 	function getScore() {
-		Http.setRequestHeader("Content-Type", "text/json");
-		var s = "{'lat': " + urlParams.get('lat').toString() + ", 'lon': " + urlParams.get('lng').toString() + "}";
+		Http.setRequestHeader("Content-Type", "application/json");
+		var s = '{"lat": ' + urlParams.get('lat').toString() + ', "lon": ' + urlParams.get('lng').toString() + '}';
 		Http.send(s);
 	}
 
