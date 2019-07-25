@@ -16,12 +16,7 @@
 			<div id="score-msg">&nbsp;</div>
 		</div>
 	</center>
-	<div class="asdf" id="asdf">
-		sfhkhrejk,ret,.fnmerghndnaeb nmenmbernm,aen mqeyuhldrfjk let sklrthfrts,mhgvmhjt dcnghjcgnytigcnj i7fcgnf ti57yfyrti7jcgnru i6ycgnru6 yjcgnjriu6yc
-		<ul>
-			<li>fdsfgrbterjtrhetijerkcge</li>
-		</ul>
-	</div>
+	<div class="asdf" id="asdf"></div>
 </div>
 
 <div class="offscreen"><img src="gradient.png" id="gradient"></div>
@@ -47,7 +42,7 @@
 		document.getElementById("score-msg").innerHTML = j.inspirational_message;
 		var a = j.abilities;
 		document.getElementById("asdf").innerHTML = "<ul>";
-		for (int i=0; i<a.length; i++) {
+		for (var i=0; i<a.length; i++) {
 			document.getElementById("asdf").innerHTML += "<li>" + a[i] + "</li>";
 		}
 		document.getElementById("asdf").innerHTML += "<ul>";
