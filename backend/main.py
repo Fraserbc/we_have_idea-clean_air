@@ -6,7 +6,7 @@ import sqlite3, json, statistics, math, random
 app = Flask(__name__)
 
 # Just an echo endpoint for testing
-@app.route("/api/echo")
+@app.route("/api/echo", methods=["POST"])
 def ping():
 	json_data = json.loads(request.get_data().decode())
 	return {'echo': json_data}
@@ -33,7 +33,7 @@ help_messages = [
 ]
 
 # The endpoint that takes lat long data and returns a score
-@app.route("/api/score")
+@app.route("/api/score", methods=["POST"])
 def score():
 	# Get the json data from the user
 	json_data = json.loads(request.get_data().decode())
