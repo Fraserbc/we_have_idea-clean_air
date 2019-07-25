@@ -8,9 +8,17 @@
     float: left;
     width: 70vw;
     margin: 0;
+    background-color: black;
+    color: white;
 
 }
 #submitbutton {
     width: 19vw;
-    padding-top: 0.5vh;    
+    padding-top: 0.5vh;
+    background-color: black;
+    color: white;
+}
+
+body {
+	background-color: black
 }
