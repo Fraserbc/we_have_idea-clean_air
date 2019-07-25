@@ -14,4 +14,60 @@
     width: 19vw;
     padding-top: 0.5vh;    
 }
-   
+
+* {
+	font-family: "Open Sans", serif;
+	color: #fff;
+	padding: 0px;
+	margin: 0px;
+}
+
+body {
+	background-color: #000;
+}
+
+div.main-container {
+	max-width: 1024px;
+	margin: auto;
+	background-color: rgba(255, 255, 255, 0.2);
+	padding: 25px;
+	margin-top: 50px;
+}
+div.score-text{
+	position: relative;
+	width: 100%;
+	text-align: center;
+	top: -400px;
+	font-size: 40px;
+	text-align: center;
+	cursor: default;
+}
+div.score-text span#score-text {
+	font-size: 120px;
+}
+div.score-text div#score-msg {
+	font-size: 26px;
+	padding: 0 380px;
+}
+
+.offscreen {
+	position: absolute;
+	top: -1000px;
+}
+
+.asdf {
+	position: relative;
+	top: -300px;
+	font-size: 26px;
+}
+
+ul {
+	margin-left: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.title {
+	font-size: 48px;
+	text-align: center;
+}
