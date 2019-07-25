@@ -14,7 +14,7 @@
     </head>
     <body>
         <!--form for getting postcode-->
-        <form id="postcodeform" action="#" onsubmit="onLocationFound(document.getElementById('postcodebox').value);"><input id="postcodebox" type="text" placeholder="Postcode" name="postcode"><input id="submitbutton" type="submit" value="Go"></form>
+        <form id="postcodeform"><input id="postcodebox" type="text" placeholder="Postcode" name="postcode"><input id="submitbutton" type="submit" value="Go"></form>
 
         <div id="map"></div>
 
@@ -59,6 +59,12 @@
                     }
                 }
             }
+
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var postcode = url.searchParams.get("postcode");
+
+            if (postcode) { onLocationFound(postcode); }
         </script>
     </body>
 </html>
