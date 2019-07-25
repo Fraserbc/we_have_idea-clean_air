@@ -75,7 +75,7 @@ def score():
 		# Gets the location from the monitoring station to the user
 		# Flip it so 1 = 0 and 0 = 1
 		# We assume the users are in Edinburgh only so we can flip it by taking away one and then using abs
-		distances.append(abs( math.sqrt( location[1]-json_data["lat"]**2 + location[2]-json_data["lon"]**2 ) - 1))
+		distances.append(abs( math.sqrt( abs(location[1]-json_data["lat"])**2 + abs(location[2]-json_data["lon"])**2 ) - 1))
 
 		# Get the data from the db
 		cur.execute(query.format(location[0]))
