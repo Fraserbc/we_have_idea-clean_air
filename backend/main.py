@@ -1,7 +1,7 @@
 # Import Flask and Flask Restful for the api
 from flask import Flask, request
 from flask_restful import Resource, Api
-import sqlite3, uuid, statistics, math
+import sqlite3, uuid, statistics, math, random
 
 # A nice decorator so I can use "@endpoint("/foo")"
 def endpoint(endpoint):
@@ -24,6 +24,14 @@ api = Api(app)
 @endpoint("/echo")
 def ping(json_data):
 	return {'echo': json_data}
+
+#Inspirational messages
+inspiration = {
+	"250":	["A1", "A2"],
+	"500":	["B1", "B2"],
+	"750":	["C1", "C2"],
+	"1000":	["D1", "D2"]
+}
 
 # The endpoint that takes lat long data and returns a score
 @endpoint("/score")
@@ -73,8 +81,14 @@ def score(json_data):
 	# Round to the nearest integer
 	score = round(statistics.mean([abs(((x*y)/10)-1)*1000 for x, y in zip(average, distances)]))
 
+	#Get the inspirational message
+	message = ""
+	for score_range in inspiration.keys():
+		if score <= int(score_range):
+			message = random.choice(inspiration[score_range])
+
 	# Return the score
-	return {'score':score}
+	return {'score':score, "message":message}
 
 # Start the app
 if __name__ == '__main__':
