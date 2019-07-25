@@ -30,7 +30,6 @@ div.score-text span#score-text {
 }
 div.score-text div#score-msg {
 	font-size: 26px;
-	padding: 0 380px;
 }
 
 .offscreen {
@@ -53,4 +52,5 @@ ul {
 .title {
 	font-size: 48px;
 	text-align: center;
+	margin-bottom: 20px;
 }
