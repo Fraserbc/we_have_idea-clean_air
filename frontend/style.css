@@ -1,24 +1,32 @@
 #map {
     width: 98vw;
-    height: 96vh;
+    height: 92vh;
     float: right;
 }
 
 #postcodebox {
     float: left;
     width: 70vw;
-    margin: 0;
-    background-color: black;
+    height: 8vh;
+    margin: 5px;
+    float: left;
+    background-color:  #666666;
     color: white;
-
 }
+
+#postcodebox::placeholder {
+	color: white;
+}
+
 #submitbutton {
     width: 19vw;
-    padding-top: 0.5vh;
-    background-color: black;
+	height: 8vh;
+	margin: 5px;
+	float: right;	
+    background-color:  #666666;
     color: white;
 }
 
 body {
-	background-color: black
+	background-color: #1a1a1a;
 }
