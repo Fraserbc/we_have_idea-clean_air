@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>thingy</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+	<style type="text/css">
+		* {
+			font-family: "Open Sans", serif;
+		}
+		div.score-text{
+			position: relative;
+			width: 100%;
+			text-align: center;
+			top: -400px;
+			font-size: 40px;
+			text-align: center;
+		}
+		div.score-text span#score-text {
+			font-size: 120px;
+		}
+		div.score-text div#score-msg {
+			font-size: 26px;
+			padding: 0 380px;
+		}
+
+		.offscreen {
+			position: absolute;
+			top: -1000px;
+		}
+
+		.asdf {
+			position: relative;
+			top: -300px;
+			font-size: 26px;
+		}
+
+		ul {
+			margin-left: 40px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		.title {
+			font-size: 48px;
+		}
+	</style>
+</head>
+<body onload="getScore();">
+
+<div class="main-container">
+	<div class="title">Air Quality Meter</div>
+	<center>
+		<canvas id="dial" width="512" height="512"></canvas>
+		<div class="score-text">Your score is:<br>
+			<span id="score-text">&nbsp;</span><br>
+			<div id="score-msg">&nbsp;</div>
+		</div>
+	</center>
+	<div class="asdf">
+		sfhkhrejk,ret,.fnmerghndnaeb nmenmbernm,aen mqeyuhldrfjk let sklrthfrts,mhgvmhjt dcnghjcgnytigcnj i7fcgnf ti57yfyrti7jcgnru i6ycgnru6 yjcgnjriu6yc
+		<ul>
+			<li>fdsfgrbterjtrhetijerkcge</li>
+		</ul>
+	</div>
+</div>
+
+<div class="offscreen"><img src="gradient.png" id="gradient"></div>
+
+<script type="text/javascript">
+	var urlParams = new URLSearchParams(window.location.search);
+
+	const Http = new XMLHttpRequest();
+	const url = window.location.href.split("/")[2];
+
+	Http.open("POST", "http://" + url + "/api/score");
+
+	function getScore() {
+		Http.setRequestHeader("Content-Type", "text/json");
+		var s = "{'lat': " + urlParams.get('lat').toString() + ", 'lon': " + urlParams.get('lng').toString() + "}";
+		Http.send(s);
+	}
+
+	Http.onreadystatechange = function() {
+		var j = JSON.parse(Http.responseText);
+		drawDial(j.score,  512);
+		document.getElementById("score-text").innerHTML = j.score.toString();
+		document.getElementById("score-msg").innerHTML = j.message;
+	}
+</script>
+<script src="dial.js"></script>
+
+</body>
+</html>
