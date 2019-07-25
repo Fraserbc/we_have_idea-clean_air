@@ -6,6 +6,7 @@
 		<link rel="stylesheet" type="text/css" href="score.css">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 	</head>
+	<!-- get the score and update the dial when the page loads!-->
 	<body onload="getScore();">
 
 	<div class="main-container">
@@ -17,38 +18,54 @@
 				<div id="score-msg">&nbsp;</div>
 			</div>
 		</center>
-		<div class="asdf" id="asdf"></div>
+		<!-- a div to display the actions you can take !-->
+		<div class="actions" id="actions"></div>
 	</div>
-
+	
+	<!-- display the gradient off screen so it can be used for the canvas !-->
 	<div class="offscreen"><img src="gradient.png" id="gradient"></div>
 
 	<script type="text/javascript">
 		var urlParams = new URLSearchParams(window.location.search);
 
 		const Http = new XMLHttpRequest();
+		
+		// get the url the page was loaded from
 		const url = window.location.href.split("/")[2];
 
 		Http.open("POST", "http://" + url + "/api/score");
-
+		
+		// send a POST request to the server with JSON containing the latitude and longitude
 		function getScore() {
 			Http.setRequestHeader("Content-Type", "application/json");
 			var s = '{"lat": ' + urlParams.get('lat').toString() + ', "lon": ' + urlParams.get('lng').toString() + '}';
 			Http.send(s);
 		}
 
+		// when the response is recieved, update the page to show the score and a couple of messages
 		Http.onreadystatechange = function() {
+			// parse the response so it can be accessed
 			var j = JSON.parse(Http.responseText);
+			// draw the dial (512 pixels square)
 			drawDial(j.score,  512);
+			// display the score in the centre of the dial
 			document.getElementById("score-text").innerHTML = j.score.toString();
+			// display a message under the score
 			document.getElementById("score-msg").innerHTML = j.message;
+			// create an array that stores the actions you can take as separate strings
 			var a = j.abilities;
-			document.getElementById("asdf").innerHTML = "<ul>";
+			// add the start of the unordered list
+			document.getElementById("actions").innerHTML = "<ul>";
+			// for every action, add a list item
 			for (var i=0; i<a.length; i++) {
-				document.getElementById("asdf").innerHTML += "<li>" + a[i] + "</li>";
+				document.getElementById("actions").innerHTML += "<li>" + a[i] + "</li>";
 			}
-			document.getElementById("asdf").innerHTML += "<ul>";
+			// end the unordered list
+			document.getElementById("actions").innerHTML += "<ul>";
 		}
 	</script>
+		
+	<!-- import the script to display the dial !-->
 	<script src="dial.js"></script>
 
 	</body>
