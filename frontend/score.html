@@ -1,51 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Score</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>thingy</title>
+	<link rel="stylesheet" type="text/css" href="css-main">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-	<style type="text/css">
-		* {
-			font-family: "Open Sans", serif;
-		}
-		div.score-text{
-			position: relative;
-			width: 100%;
-			text-align: center;
-			top: -400px;
-			font-size: 40px;
-			text-align: center;
-		}
-		div.score-text span#score-text {
-			font-size: 120px;
-		}
-		div.score-text div#score-msg {
-			font-size: 26px;
-			padding: 0 380px;
-		}
-
-		.offscreen {
-			position: absolute;
-			top: -1000px;
-		}
-
-		.asdf {
-			position: relative;
-			top: -300px;
-			font-size: 26px;
-		}
-
-		ul {
-			margin-left: 40px;
-			margin-top: 10px;
-			margin-bottom: 10px;
-		}
-
-		.title {
-			font-size: 48px;
-			text-align: center;
-		}
-	</style>
 </head>
 <body onload="getScore();">
 
@@ -66,7 +24,7 @@
 	</div>
 </div>
 
-<div class="offscreen"><img src="gradient.png" id="gradient"></div>
+<div class="offscreen"><img src="gradient" id="gradient"></div>
 
 <script type="text/javascript">
 	var urlParams = new URLSearchParams(window.location.search);
@@ -74,7 +32,7 @@
 	const Http = new XMLHttpRequest();
 	const url = window.location.href.split("/")[2];
 
-	Http.open("POST", "http://" + url + "/api/score");
+	Http.open("POST", "http://" + url + "/getscore");
 
 	function getScore() {
 		Http.setRequestHeader("Content-Type", "text/json");
@@ -89,7 +47,7 @@
 		document.getElementById("score-msg").innerHTML = j.message;
 	}
 </script>
-<script src="dial.js"></script>
+<script src="js-dial"></script>
 
 </body>
 </html>
