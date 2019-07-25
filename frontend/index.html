@@ -27,9 +27,8 @@
         	</div>
         </form>
 
-
         <div id="map"></div>
-
+        
         <script>
             //shows entire world
             var map = L.map('map').fitWorld();
@@ -65,14 +64,14 @@
 
                     //changes button to Get results and onclick redirects to score page
                     var elem = document.getElementById('submitbutton');
-                    elem.value = "Get results"
-		    elem.type = ""
+                    elem.value = "Get results";
+		    		elem.type = "";
                     elem.onclick =  function (){
                         window.location = "score.html?lat=" + geocoded.latlng.lat + "&lng=" + geocoded.latlng.lng
                     }
                 }
             }
-
+            
             var url_string = window.location.href;
             var url = new URL(url_string);
             var postcode = url.searchParams.get("postcode");
