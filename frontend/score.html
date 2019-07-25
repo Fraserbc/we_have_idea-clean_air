@@ -39,7 +39,7 @@
 		var j = JSON.parse(Http.responseText);
 		drawDial(j.score,  512);
 		document.getElementById("score-text").innerHTML = j.score.toString();
-		document.getElementById("score-msg").innerHTML = j.inspirational_message;
+		document.getElementById("score-msg").innerHTML = j.message;
 		var a = j.abilities;
 		document.getElementById("asdf").innerHTML = "<ul>";
 		for (var i=0; i<a.length; i++) {
