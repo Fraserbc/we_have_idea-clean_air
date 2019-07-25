@@ -66,6 +66,7 @@
                     //changes button to Get results and onclick redirects to score page
                     var elem = document.getElementById('submitbutton');
                     elem.value = "Get results"
+		    elem.type = ""
                     elem.onclick =  function (){
                         window.location = "/score.html?lat=" + geocoded.latlng.lat + "&lng=" + geocoded.latlng.lng
                     }
