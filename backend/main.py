@@ -1,28 +1,14 @@
 # Import Flask and Flask Restful for the api
 from flask import Flask, request
-from flask_restful import Resource, Api
-import sqlite3, uuid, statistics, math, random
-
-# A nice decorator so I can use "@endpoint("/foo")"
-def endpoint(endpoint):
-	def wrapper(callback):
-		class endpoint_class(Resource):
-			def post(self):
-				json_data = request.get_json(force=True)
-				return callback(json_data)
-		
-		endpoint_class.__name__ = uuid.uuid4().hex
-		api.add_resource(endpoint_class, "/api"+endpoint)
-	
-	return wrapper
+import sqlite3, json, statistics, math, random
 
 # Create the app and api
 app = Flask(__name__)
-api = Api(app)
 
 # Just an echo endpoint for testing
-@endpoint("/echo")
-def ping(json_data):
+@app.route("/api/echo")
+def ping():
+	json_data = json.loads(request.get_data().decode())
 	return {'echo': json_data}
 
 # Inspirational messages
@@ -41,24 +27,32 @@ help_messages = [
 	"Work closer to home and drive less",
 	"Join a car share",
 	"Don't drive during rush hour",
-	"Be more enery efficient and save money by insulating your home",
+	"Be more energy efficient and save money by insulating your home",
 	"Don't burn things especialy coal or wood",
 	"Use electric heating"
 ]
 
 # The endpoint that takes lat long data and returns a score
-@endpoint("/score")
-def score(json_data):
+@app.route("/api/score")
+def score():
+	# Get the json data from the user
+	json_data = json.loads(request.get_data().decode())
+	
+	# Create a DB connection
+	# Can't do it outside this function as it is in a different thread
 	db = sqlite3.connect("air_pollution.db")
 	cur = db.cursor()
+
+	# Get the locations and corresponding latitudes and longitudes
 	cur.execute("SELECT location,lat,lon FROM data")
 	data = cur.fetchall()
 
-	# Lambda for sorting the list
+	# Lambda for sorting the list by how close it is to the user
 	sort = lambda x: (x[1]-json_data["lat"], x[2]-json_data["lon"])
 
 	data.sort(key=sort)
 	
+	# Query for selecting all the data by location
 	query = """	SELECT carbon_monoxide,\
 					nitric_oxide,\
 					nitrogen_dioxide,\
@@ -78,7 +72,10 @@ def score(json_data):
 	average, distances = [], []
 	for location in data[:2]:
 		# Pythagorean theorem magic
-		distances.append(abs( math.sqrt( abs(location[1]-json_data["lat"])**2 + abs(location[2]-json_data["lon"])**2 ) - 1))
+		# Gets the location from the monitoring station to the user
+		# Flip it so 1 = 0 and 0 = 1
+		# We assume the users are in Edinburgh only so we can flip it by taking away one and then using abs
+		distances.append(abs( math.sqrt( location[1]-json_data["lat"]**2 + location[2]-json_data["lon"]**2 ) - 1))
 
 		# Get the data from the db
 		cur.execute(query.format(location[0]))
